@@ -1,30 +1,35 @@
-#include "main.h"
-/**
- * puts2 - function should print only one character out of two
- * starting with the first one
- * @str: input
- * Return: print
- */
-void puts2(char *str)
-{
-	int longi = 0;
-	int t = 0;
-	char *y = str;
-	int o;
+#include <unistd.h>
 
-	while (*y != '\0')
-	{
-		y++;
-		longi++;
-	}
-	t = longi - 1;
-	for (o = 0 ; o <= t ; o++)
-	{
-		if (o % 2 == 0)
-	{
-		_putchar(str[o]);
-	}
-	}
-	_putchar('\n');
+/**
+ * print_chessboard - prints an 8x8 chessboard
+ */
+void print_chessboard(void)
+{
+    int i, j;
+    char black_square = '#';
+    char white_square = ' ';
+
+    for (i = 0; i < 8; i++)
+    {
+        for (j = 0; j < 8; j++)
+        {
+            if ((i + j) % 2 == 0)
+                write(1, &black_square, 1);
+            else
+                write(1, &white_square, 1);
+        }
+        write(1, "\n", 1);
+    }
+}
+
+/**
+ * main - entry point
+ *
+ * Return: Always 0 (Success)
+ */
+int main(void)
+{
+    print_chessboard();
+    return (0);
 }
 
